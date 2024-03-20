@@ -1,0 +1,53 @@
+import java.awt.*;
+import java.awt.event.*;
+import javax.swing.*;
+
+public class VendaDoces extends JFrame implements ActionListener {
+    private JButton btnPedir;
+    private JLabel lblTotal;
+    private double totalCompra;
+
+    public VendaDoces() {
+        super("Venda de Doces");
+
+ 
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setSize(300, 200);
+        setLocationRelativeTo(null);
+        setLayout(new FlowLayout());
+
+       
+        btnPedir = new JButton("Pedir");
+        lblTotal = new JLabel("Total da compra: R$ 0.00");
+        
+        
+        add(btnPedir);
+        add(lblTotal);
+
+        
+        btnPedir.addActionListener(this);
+    }
+
+    public void actionPerformed(ActionEvent e) {
+        if (e.getSource() == btnPedir) {
+           
+            double precoDoce1 = 3.50;
+            double precoDoce2 = 2.00;
+            double precoDoce3 = 1.75;
+            
+            
+            totalCompra = precoDoce1 + precoDoce2 + precoDoce3;
+
+            
+            lblTotal.setText(String.format("Total da compra: R$ %.2f", totalCompra));
+        }
+    }
+
+    public static void main(String[] args) {
+        SwingUtilities.invokeLater(new Runnable() {
+            public void run() {
+                new VendaDoces().setVisible(true);
+            }
+        });
+    }
+}
